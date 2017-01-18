@@ -2,7 +2,7 @@
 A WordPress plugin to easily install the Mediabank into a WordPress installation
 
 
-## Mediabank 
+## Mediabank
 Tags: mediabank, heritage, Picturae
 
 Requires at least: 3.2
@@ -23,8 +23,10 @@ This plugin can be used to bootstrap the Picturae Mediabank inside a WordPress w
 ## Installation
 * Upload the Mediabank plugin to your blog and activate it.
 * Go to the Mediabanks's settings page and enter your API key and media entity code(s).
-* Make sure the your theme's header.php has a <base href="/"> tag inside.
+* Make sure the your theme's header.php has a base tag located in the head as follwed:
 
+```html
+<base href="<?php echo get_permalink(); ?>/">
+```
 
-
-
+* Set the correct link structure in de admin at **Settings -> Permalinks** to **Custom Structure** and *remove the trailing slash* at the end like **/%postname%**
