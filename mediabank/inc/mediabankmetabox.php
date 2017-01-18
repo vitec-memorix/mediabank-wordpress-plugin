@@ -1,15 +1,5 @@
 <?php
-/**
- * This is the Lets Build IT! 2016 template
- * This theme makes use of a module setup to include custom functionality.
- *
- * @package WordPress
- * @subpackage Picturae Mediabank
- * @since Picturae Mediabank 1.0
- */
-
-
-// Page Mediabank metabox
+ 
 class MediabankMetabox {
 
     static $name = 'page';
