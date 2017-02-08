@@ -13,7 +13,7 @@ A WordPress plugin to easily embed the Mediabank client into your WordPress inst
 
 ## Description
 
-This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webservices.picturae.pro/v2mediabank) inside a WordPress website. The Picturae Mediabank is used to enable Memorix Maior users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
+This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webservices.picturae.pro/v2mediabank) inside a WordPress website. The Picturae Mediabank is used to enable [Memorix Maior](https://picturae.com/nl/beheer/collectiebeheer) users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
 
 * The plugin offers the ability to configure several display modes
 * The plugin requires a valid API key to the Picturae Webkitchen API
