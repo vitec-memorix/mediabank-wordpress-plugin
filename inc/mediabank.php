@@ -106,7 +106,7 @@ class Mediabank{
             'mediabank_watermark_url' => get_option('mediabank_watermark_url'),
           ];
 
-          wp_enqueue_script('mbscr', plugins_url('/mediabank/js/script.js'),'jquery');
+          wp_enqueue_script('mbscr', plugins_url('/mediabank-wordpress-plugin/js/script.js'),'jquery');
           wp_localize_script( 'mbscr', 'options', $options );
 
     }

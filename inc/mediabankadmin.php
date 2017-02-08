@@ -212,7 +212,7 @@ class MediabankAdmin{
       if (!isset($_REQUEST['settings-updated']))
           $_REQUEST['settings-updated'] = false; ?>
       <div class="wrap">
-          <img src="<?php echo plugins_url(); ?>/mediabank/img/picturae-logo.png">
+          <img src="<?php echo plugins_url(); ?>/mediabank-wordpress-plugin/img/picturae-logo.png">
           <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
           <form method="post" action="options.php">
               <?php settings_fields('mediabank_options'); ?>
