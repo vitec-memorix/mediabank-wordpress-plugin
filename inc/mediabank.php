@@ -68,21 +68,21 @@ class Mediabank{
         $js_gallery_modes = array();
         foreach (MediabankAdmin::$mediabank_settings['gallery_modes'] as $id => $value) {
             if (get_option('mediabank_gallery_modes_' . $id)) {
-                $js_gallery_modes[] = "{id:'$id'}";
+                $js_gallery_modes[] = "$id";
             }
         }
         $js_detail_modes = array();
 
         foreach (MediabankAdmin::$mediabank_settings['detail_modes'] as $id => $value) {
             if (get_option('mediabank_detail_modes_' . $id)) {
-                $js_detail_modes[] = "'$id'";
+                $js_detail_modes[] = "$id";
             }
         }
 
         $js_topviewer_buttons = array();
         foreach (MediabankAdmin::$mediabank_settings['topviewer_buttons'] as $id => $value) {
             if (get_option('mediabank_topviewer_buttons_' . $id)) {
-                $js_topviewer_buttons[] = "'$id'";
+                $js_topviewer_buttons[] = "$id";
             }
         }
 
@@ -103,7 +103,7 @@ class Mediabank{
             'js_gallery_modes' => $js_gallery_modes, // implode(",", $js_gallery_modes),
             'js_detail_modes' => $js_detail_modes, // implode(",", $js_detail_modes),
             'js_topviewer_buttons' => $js_topviewer_buttons, // implode(",", $js_topviewer_buttons),
-            'js_topviewer_buttons' => get_option('mediabank_watermark_url'),
+            'mediabank_watermark_url' => get_option('mediabank_watermark_url'),
           ];
 
           wp_enqueue_script('mbscr', plugins_url('/mediabank/js/script.js'),'jquery');

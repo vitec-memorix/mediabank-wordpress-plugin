@@ -1,26 +1,27 @@
-# Mediabank-WordPress-plugin
-A WordPress plugin to easily install the Mediabank into a WordPress installation
+# mediabank-wordpress-plugin
 
 
-## Mediabank
-Tags: mediabank, heritage, Picturae
+![Picturae](img/picturae-logo.png)
 
-Requires at least: 3.2
 
-Tested up to: 4.5.2
+A WordPress plugin to easily embed the Mediabank client into your WordPress installation.
 
-Stable tag: 1.0
+# Requirements
 
-License: GPLv2 or later
-
+- PHP 5.5 or above
+- Mediabank API key
 
 ## Description
-This plugin can be used to bootstrap the Picturae Mediabank inside a WordPress website. The Picturae Mediabank is used to enable Memorix Maior users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
+
+This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webservices.picturae.pro/v2mediabank) inside a WordPress website. The Picturae Mediabank is used to enable Memorix Maior users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
 
 * The plugin offers the ability to configure several display modes
 * The plugin requires a valid API key to the Picturae Webkitchen API
 
+
 ## Installation
+
+* Download the latest version of the plugin archive for [here](https://github.com/picturae/mediabank-wordpress-plugin/releases/download/1.0.0/mediabank.zip)
 * Upload the Mediabank plugin to your blog and activate it.
 * Go to the Mediabanks's settings page and enter your API key and media entity code(s).
 * Make sure the your theme's header.php has a base tag located in the head as follwed:
@@ -30,3 +31,7 @@ This plugin can be used to bootstrap the Picturae Mediabank inside a WordPress w
 ```
 
 * Set the correct link structure in de admin at **Settings -> Permalinks** to **Custom Structure** and *remove the trailing slash* at the end like **/%postname%**
+
+## Contact
+
+For any questions please visit us at [picturae.com](http://picturae.com) or contact us at [contact@picturae.com](mailto://contact@picturae.com)
