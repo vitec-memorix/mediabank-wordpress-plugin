@@ -94,7 +94,7 @@ class MediabankAdmin{
                 'default' => 1)
         ));
 
-    add_action('init', [__CLASS__, 'mediabank_init']);
+    add_action('admin_init', [__CLASS__, 'mediabank_init']);
     add_filter('plugin_action_links', [__CLASS__, 'plugin_action_links']);
     add_action('admin_menu', [__CLASS__, 'mediabank_add_options_submenu_page']);
     add_action('admin_init', [__CLASS__, 'mediabank_register_settings']);

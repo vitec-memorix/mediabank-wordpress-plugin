@@ -75,15 +75,5 @@ require_once(dirname(__FILE__) . '/inc/mediabank.php');
 MediabankMetabox::setup();
 MediabankAdmin::setup();
 
-add_action( 'init', 'template_hooks', 1, 0 );
-function template_hooks(){
-
-    /* load page theme */
-    add_filter( 'template', function(){
-
-      // Setup the mediabank properties plugin
-      Mediabank::setup();
-
-    });
-
-}
+// Setup mediabank frontend
+add_action('init', ['Mediabank', 'setup']);

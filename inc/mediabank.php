@@ -33,7 +33,7 @@ class Mediabank{
     {
 
         // global $mediabank_settings;
-        $apiUrl = get_option('mediabank_api_url');
+        $apiUrl = rtrim(get_option('mediabank_api_url'), '/') . '/';
         $apiKey = get_option('mediabank_api_key');
         $entities = get_option('mediabank_entries');
 
@@ -105,8 +105,8 @@ class Mediabank{
             'js_topviewer_buttons' => $js_topviewer_buttons, // implode(",", $js_topviewer_buttons),
             'mediabank_watermark_url' => get_option('mediabank_watermark_url'),
           ];
-
-          wp_enqueue_script('mbscr', plugins_url('/mediabank-wordpress-plugin/js/script.js'),'jquery');
+          
+          wp_enqueue_script('mbscr', plugins_url('/js/script.js', __DIR__),'jquery');
           wp_localize_script( 'mbscr', 'options', $options );
 
     }
