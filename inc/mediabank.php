@@ -1,37 +1,41 @@
 <?php
 
-class Mediabank{
-
+class Mediabank
+{
     /**
      * Setup the mediabank plugin
      */
-    public static function setup() {
+    public static function setup()
+    {
+        // Alway set rewrite rules for all pages with mediabank
+        // @TODO Fetching the pages can be done with meta query for field "display_mediabank", but seems buggy
+        foreach (self::get_pages_by_shortcode('[mediabank]') as $page) {
+            self::add_mediabank_rewrite($page);
+        }
+        
+        // Insert mediabank where needed
+        add_shortcode('mediabank', [__CLASS__, 'insert_mediabank']);
 
-      add_shortcode('mediabank', [__CLASS__, 'insert_mediabank']);
-
-      if(get_post_meta( get_the_ID(), 'display_mediabank', true )){
-          add_filter('the_content', [__CLASS__, 'add_filter_the_content']);
-      }
-
+        if (get_post_meta(get_the_ID(), 'display_mediabank', true)) {
+            add_filter('the_content', [__CLASS__, 'add_filter_the_content']);
+        }
     }
-
 
     /**
      * Add the mediabank to the content loop
      */
-    public static function add_filter_the_content($content){
-      $beforecontent = do_shortcode( '[mediabank]' ); //self::show();
-      $fullcontent = $beforecontent . $content;
-      return $fullcontent;
+    public static function add_filter_the_content($content)
+    {
+        $beforecontent = do_shortcode('[mediabank]'); //self::show();
+        $fullcontent = $beforecontent . $content;
+        return $fullcontent;
     }
-
-
+    
     /**
      * This script is executed when the shortcode "[mediabank]" is found in a textfield.
      */
     public static function insert_mediabank()
     {
-
         // global $mediabank_settings;
         $apiUrl = rtrim(get_option('mediabank_api_url'), '/') . '/';
         $apiKey = get_option('mediabank_api_key');
@@ -40,7 +44,7 @@ class Mediabank{
         if (empty($apiUrl) || empty($apiKey)) {
             ?>
             <div class="update-nag notice">
-            <p><?php _e('The Mediabank plugin is missing required configuration settings. Please check the adminpanel.', 'mediabank'); ?></p>
+                <p><?php _e('The Mediabank plugin is missing required configuration settings. Please check the adminpanel.', 'mediabank'); ?></p>
             </div><?php
             return;
         }
@@ -60,6 +64,7 @@ class Mediabank{
             wp_register_style('css' . $i, $path);
             wp_enqueue_style('css' . $i);
         }
+
         foreach ($includeJs as $i => $path) {
             wp_register_script('js' . $i, $path, array('jquery'));
             wp_enqueue_script('js' . $i, array('jquery'));
@@ -85,18 +90,15 @@ class Mediabank{
                 $js_topviewer_buttons[] = "$id";
             }
         }
-
-
         ?>
         <pic-mediabank
             data-api-key="<?php echo $apiKey; ?>"
             data-api-url="<?php echo $apiUrl; ?>"
             data-entities="<?php echo $entities; ?>"
-        />
+            />
 
-         <?php
-
-          $options = [
+        <?php
+        $options = [
             'mediabank_endless_scroll' => get_option('mediabank_endless_scroll') ? 'true' : 'false',
             'mediabank_search_help_url' => get_option('mediabank_search_help_url'),
             'mediabank_sorting' => get_option('mediabank_sorting') ? 'true' : 'false',
@@ -104,11 +106,37 @@ class Mediabank{
             'js_detail_modes' => $js_detail_modes, // implode(",", $js_detail_modes),
             'js_topviewer_buttons' => $js_topviewer_buttons, // implode(",", $js_topviewer_buttons),
             'mediabank_watermark_url' => get_option('mediabank_watermark_url'),
-          ];
-          
-          wp_enqueue_script('mbscr', plugins_url('/js/script.js', __DIR__),'jquery');
-          wp_localize_script( 'mbscr', 'options', $options );
+        ];
 
+        wp_enqueue_script('mbscr', plugins_url('/js/script.js', __DIR__), 'jquery');
+        wp_localize_script('mbscr', 'options', $options);
+    }
+    
+    public static function add_mediabank_rewrite($page)
+    {
+        $url = get_permalink($page->ID);
+        
+        $shortUrl = str_replace(home_url(), '', $url);
+        $shortUrl = trim($shortUrl, '/');
+        
+        add_rewrite_rule(
+            $shortUrl . '/.*',
+            'index.php?pagename=' . $page->post_name,
+            'top'
+        );
     }
 
+    public static function get_pages_by_shortcode($shortcode)
+    {
+        global $wpdb;
+
+        $sql = 'SELECT *
+		FROM ' . $wpdb->posts . '
+		WHERE
+			post_type = "page"
+			AND post_status="publish"
+			AND post_content LIKE "%' . $shortcode . '%"';
+
+        return $wpdb->get_results($sql);
+    }
 }
