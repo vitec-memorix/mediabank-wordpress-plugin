@@ -13,7 +13,7 @@ A WordPress plugin to easily embed the Mediabank client into your WordPress inst
 
 ## Description
 
-This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webservices.picturae.pro/v2mediabank) inside a WordPress website. The Picturae Mediabank is used to enable [Memorix Maior](https://picturae.com/nl/beheer/collectiebeheer) users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
+This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webservices.picturae.pro/v2mediabank) inside a WordPress website. The Picturae Mediabank is used to enable Memorix Maior users to publish their collections on the internet. Website visitors can then search through the collections, filter them and view them in several display modes.
 
 * The plugin offers the ability to configure several display modes
 * The plugin requires a valid API key to the Picturae Webkitchen API
@@ -21,7 +21,7 @@ This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webser
 
 ## Installation
 
-* Download the latest version of the plugin archive for [here](https://github.com/picturae/mediabank-wordpress-plugin/archive/v1.1.zip)
+* Download the latest version of the plugin archive from [here](https://github.com/picturae/mediabank-wordpress-plugin/releases/download/1.0.0/mediabank.zip)
 * Upload the Mediabank plugin to your blog and activate it.
 * Go to the Mediabanks's settings page and enter your API key and media entity code(s).
 * Make sure the your theme's header.php has a base tag located in the head as follwed:
@@ -31,6 +31,10 @@ This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webser
 ```
 
 * Set the correct link structure in de admin at **Settings -> Permalinks** to **Custom Structure** and *remove the trailing slash* at the end like **/%postname%**
+
+* Create a page where the mediabank will be displayed
+    * Put [mediabank] in the content of the page
+    * Check the checkbox "Display mediabank"
 
 ## Contact
 
