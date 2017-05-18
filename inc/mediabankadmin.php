@@ -15,7 +15,8 @@ class MediabankAdmin
             'entities' => 0,
             'endless_scroll' => '',
             'sorting' => '',
-            'watermark_url' => '',
+            //@TODO This does not work so is temporary disabled.
+//            'watermark_url' => '',
             'search_help_url' => '',
             'gallery_modes' => array(
                 'geo' => array(
@@ -69,29 +70,31 @@ class MediabankAdmin
                     'label' => __('Permalink', 'mediabank'),
                     'default' => 1),
             ),
-            'topviewer_buttons' => array(
-                'zoomIn' => array(
-                    'label' => __('zoomIn', 'mediabank'),
-                    'default' => 1),
-                'zoomOut' => array(
-                    'label' => __('zoomOut', 'mediabank'),
-                    'default' => 1),
-                'rotatePlus90' => array(
-                    'label' => __('rotatePlus90', 'mediabank'),
-                    'default' => 1),
-                'fullscreen' => array(
-                    'label' => __('fullscreen', 'mediabank'),
-                    'default' => 1),
-                'paginationLeft' => array(
-                    'label' => __('paginationLeft', 'mediabank'),
-                    'default' => 1),
-                'paginationRight' => array(
-                    'label' => __('paginationRight', 'mediabank'),
-                    'default' => 1),
-                'zoomingSlider' => array(
-                    'label' => __('zoomingSlider', 'mediabank'),
-                    'default' => 1)
-        ));
+            //@TODO This does not work so is temporary disabled.
+//            'topviewer_buttons' => array(
+//                'zoomIn' => array(
+//                    'label' => __('zoomIn', 'mediabank'),
+//                    'default' => 1),
+//                'zoomOut' => array(
+//                    'label' => __('zoomOut', 'mediabank'),
+//                    'default' => 1),
+//                'rotatePlus90' => array(
+//                    'label' => __('rotatePlus90', 'mediabank'),
+//                    'default' => 1),
+//                'fullscreen' => array(
+//                    'label' => __('fullscreen', 'mediabank'),
+//                    'default' => 1),
+//                'paginationLeft' => array(
+//                    'label' => __('paginationLeft', 'mediabank'),
+//                    'default' => 1),
+//                'paginationRight' => array(
+//                    'label' => __('paginationRight', 'mediabank'),
+//                    'default' => 1),
+//                'zoomingSlider' => array(
+//                    'label' => __('zoomingSlider', 'mediabank'),
+//                    'default' => 1)
+//        )
+        );
 
         add_action('admin_init', [__CLASS__, 'mediabank_init']);
         add_filter('plugin_action_links', [__CLASS__, 'plugin_action_links']);
@@ -289,22 +292,30 @@ class MediabankAdmin
                         </td>
                     </tr>
 
-                    <tr valign="top">
-                        <th scope="row"><?php _e('Watermark url', 'mediabank'); ?></th>
-                        <td>
-                            <input class="regular-text" type="text" name="mediabank_watermark_url"
-                                   id="mediabank_watermark_url" value="<?php echo get_option('mediabank_watermark_url') ?>">
-                            <br/>
-                        </td>
-                    </tr>
-
+<?php
+//@TODO This does not work so is temporary disabled.
+<<<TODO
+<tr valign="top">
+    <th scope="row"><?php _e('Watermark url', 'mediabank'); ?></th>
+    <td>
+        <input class="regular-text" type="text" name="mediabank_watermark_url"
+               id="mediabank_watermark_url" value="<?php echo get_option('mediabank_watermark_url') ?>">
+        <br/>
+    </td>
+</tr>
+TODO;
+?>
+                    
                     <tr valign="top">
                         <th scope="row"><?php _e('Search help url', 'mediabank'); ?></th>
                         <td><input class="regular-text" type="text" name="mediabank_search_help_url"
                                    id="mediabank_search_help_url"
                                    value="<?php echo get_option('mediabank_search_help_url') ?>"><br/></td>
                     </tr>
-
+                    
+<?php
+//@TODO This does not work so is temporary disabled.
+<<<TODO
                     <tr valign="top">
                         <th scope="row"><?php _e('Topviewer buttons', 'mediabank'); ?></th>
                         <td>
@@ -312,17 +323,18 @@ class MediabankAdmin
                                 <legend class="screen-reader-text">
                                     <span><?php _e('Topviewer buttons', 'mediabank'); ?></span>
                                 </legend>
-                                <?php foreach (self::$mediabank_settings['topviewer_buttons'] as $id => $arr) { ?>
-                                    <label for="mediabank_topviewer_buttons_<?php echo $id; ?>"><input
-                                            name="mediabank_topviewer_buttons_<?php echo $id; ?>"
-                                            id="mediabank_topviewer_buttons_<?php echo $id; ?>"
-                                            value="1" <?php checked(get_option('mediabank_topviewer_buttons_' . $id)); ?>
-                                            type="checkbox"><?php _e($arr['label'], 'mediabank'); ?></label><br>
+                                <?php foreach (self::\$mediabank_settings['topviewer_buttons'] as \$id => \$arr) { ?>
+                                    <label for="mediabank_topviewer_buttons_<?php echo \$id; ?>"><input
+                                            name="mediabank_topviewer_buttons_<?php echo \$id; ?>"
+                                            id="mediabank_topviewer_buttons_<?php echo \$id; ?>"
+                                            value="1" <?php checked(get_option('mediabank_topviewer_buttons_' . \$id)); ?>
+                                            type="checkbox"><?php _e(\$arr['label'], 'mediabank'); ?></label><br>
                                 <?php } ?>
                             </fieldset>
                         </td>
                     </tr>
-
+TODO;
+?>
 
                 </table>
                 <p class="submit">
