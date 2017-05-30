@@ -97,7 +97,7 @@ class MediabankAdmin
         );
 
         add_action('admin_init', [__CLASS__, 'mediabank_init']);
-        add_filter('plugin_action_links', [__CLASS__, 'plugin_action_links']);
+        add_filter('plugin_action_links', [__CLASS__, 'plugin_action_links'], 10, 5);
         add_action('admin_menu', [__CLASS__, 'mediabank_add_options_submenu_page']);
         add_action('admin_init', [__CLASS__, 'mediabank_register_settings']);
         add_action('init', [__CLASS__, 'wpse26388_rewrites_init']);
@@ -132,15 +132,29 @@ class MediabankAdmin
             self::mediabank_initialize_settings();
         }
     }
+ 
 
     /**
-     * Add a "settings" link where plugins are listed.
-     */
-    public static function plugin_action_links($links)
+    * Add a "settings" link where plugins are listed.
+    */
+    public static function plugin_action_links($actions, $plugin_file)
     {
-        $links[] = '<a href="options-general.php?page=mediabank_options">' . esc_html__('Settings', 'mediabank') . '</a>';
-        return $links;
-    }
+    
+            if ('mediabank-wordpress-plugin/mediabank.php' == $plugin_file) {
+
+                $settings = array('settings' => '<a href="options-general.php?page=mediabank_options">' . __('Settings', 'General') . '</a>');
+                $actions = array_merge($settings, $actions);
+
+                // TODO: create suppor page
+                // $site_link = array('support' => '<a href="http://thetechterminus.com" target="_blank">Support</a>');
+                // $actions = array_merge($site_link, $actions);
+                    
+            }
+                
+            return $actions;
+
+    } 
+ 
 
     /**
      * Add an admin submenu link under Settings
@@ -173,10 +187,10 @@ class MediabankAdmin
             }
         }
     }
+
     /*
      * Set the default settings once after plug-in activation
      */
-
     public static function mediabank_initialize_settings()
     {
 
