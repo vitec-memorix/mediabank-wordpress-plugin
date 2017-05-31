@@ -21,7 +21,7 @@ This plugin can be used to bootstrap the [Picturae Mediabank](http://demo.webser
 
 ## Installation
 
-* Download the latest version of the plugin archive from [here](https://github.com/picturae/mediabank-wordpress-plugin/archive/v1.2.zip)
+* Download the latest version of the plugin archive from [here](https://github.com/picturae/mediabank-wordpress-plugin/archive/v1.3.zip)
 * Upload the Mediabank plugin to your blog and activate it.
 * Go to the Mediabanks's settings page and enter your API key and media entity code(s).
 * Make sure the your theme's header.php has a base tag located in the head as follwed:
