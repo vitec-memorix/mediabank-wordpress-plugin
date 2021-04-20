@@ -7,7 +7,7 @@
 /*
 Plugin Name: Mediabank
 Description: This plugin can be used to bootstrap the Picturae Mediabank inside a Wordpress website.
-Version: 1.2
+Version: 1.4
 Author: Picturae
 Author URI: https://picturae.com
 License: GPLv2 or later
@@ -20,9 +20,9 @@ Text Domain: mediabank
 add_filter( 'request', 'alter_the_query' );
 function alter_the_query( $request ) {
     $dummy_query = new WP_Query();  // the query isn't run if we don't pass any query vars
-    $dummy_query->parse_query( $request );    
+    $dummy_query->parse_query( $request );
 
-    $mediabank_pars = [ 
+    $mediabank_pars = [
       'mode',
       'view'  ,
       'q',
@@ -40,7 +40,7 @@ function alter_the_query( $request ) {
       foreach($mediabank_pars as $par){
           unset($request[$par]);
       }
-    
+
       return $request;
 }
 
