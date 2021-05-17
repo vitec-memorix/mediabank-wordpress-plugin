@@ -42,11 +42,7 @@ class Mediabank
         $entities = get_option('mediabank_entries');
 
         if (empty($apiUrl) || empty($apiKey)) {
-            ?>
-            <div class="update-nag notice">
-                <p><?php _e('The Mediabank plugin is missing required configuration settings. Please check the adminpanel.', 'mediabank'); ?></p>
-            </div><?php
-            return;
+            return '<div class="update-nag notice"><p>' . esc_html_e('The Mediabank plugin is missing required configuration settings. Please check the adminpanel.', 'mediabank') . '</p></div>';
         }
 
         $includeCss = [
@@ -91,14 +87,7 @@ class Mediabank
 //                $js_topviewer_buttons[] = "$id";
 //            }
 //        }
-        ?>
-        <pic-mediabank
-            data-api-key="<?php echo $apiKey; ?>"
-            data-api-url="<?php echo $apiUrl; ?>"
-            data-entities="<?php echo $entities; ?>"
-            />
 
-        <?php
         $options = [
             'mediabank_endless_scroll' => get_option('mediabank_endless_scroll') ? 'true' : 'false',
             'mediabank_search_help_url' => get_option('mediabank_search_help_url'),
@@ -110,8 +99,12 @@ class Mediabank
 //            'mediabank_watermark_url' => get_option('mediabank_watermark_url'),
         ];
 
-        wp_enqueue_script('mbscr', plugins_url('/js/script.js', __DIR__), 'jquery');
+        wp_register_script('mbscr', plugins_url('/js/script.js', __DIR__), array('jquery'));
+        wp_enqueue_script('mbscr', array('jquery'));
         wp_localize_script('mbscr', 'options', $options);
+
+        return '<pic-mediabank data-api-key="'.$apiKey.'" data-api-url="'.$apiUrl.'" data-entities="'.$entities.'" />';
+
     }
     
     public static function add_mediabank_rewrite($page)
