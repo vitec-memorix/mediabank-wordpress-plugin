@@ -7,7 +7,7 @@
 /*
 Plugin Name: Mediabank
 Description: This plugin can be used to bootstrap the Picturae Mediabank inside a Wordpress website.
-Version: 1.4
+Version: 1.5
 Author: Picturae
 Author URI: https://picturae.com
 License: GPLv2 or later
