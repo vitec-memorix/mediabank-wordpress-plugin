@@ -1,3 +1,10 @@
+# Important Note!
+
+Currently this plugin can be used only at your own risk. Picturae is not actively maintaining this product or providing support with installation etc. If you want to use our mediabank it's quite easy to implement it into a website. Please see the [Mediabank Documentation](http://demo.webservices.picturae.pro/docs/v2mediabank/getting-started-2/)
+
+We apologise for any inconvenience this may cause.
+
+
 # mediabank-wordpress-plugin
 
 
